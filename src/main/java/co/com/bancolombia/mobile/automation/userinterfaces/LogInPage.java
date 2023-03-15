@@ -16,4 +16,7 @@ public class LogInPage {
     public static final Target LoginBoton = Target.the(" The login boton").
             located(AppiumBy.accessibilityId("loginBtn"));
     ////android.view.ViewGroup[@content-desc="loginBtn"]/android.widget.TextView
+
+    public static final Target AlertTextLog = Target.the("The alert log text").
+            located(By.id("android:id/message"));
 }

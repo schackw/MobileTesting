@@ -1,13 +1,16 @@
 package co.com.bancolombia.mobile.automation.stepdefinition;
 
 import co.com.bancolombia.mobile.automation.interactions.WaitTimeFor;
+import co.com.bancolombia.mobile.automation.questions.AlertLog;
 import co.com.bancolombia.mobile.automation.tasks.ClickOn;
 import co.com.bancolombia.mobile.automation.tasks.FillLogWith;
 import co.com.bancolombia.mobile.automation.tasks.NavigateTo;
+import co.com.bancolombia.mobile.automation.userinterfaces.LogInPage;
 import io.cucumber.java.Before;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import net.serenitybdd.screenplay.GivenWhenThen;
 import net.serenitybdd.screenplay.abilities.BrowseTheWeb;
 import net.serenitybdd.screenplay.actors.Cast;
 import net.serenitybdd.screenplay.actors.OnStage;
@@ -35,13 +38,13 @@ public class LogInStepDefinition {
     public void iEnterIncorrectCredentials() {
         // Write code here that turns the phrase above into concrete actions
         OnStage.theActorInTheSpotlight().attemptsTo(FillLogWith.theCredeentials("usuario", "contra"));
-        OnStage.theActorInTheSpotlight().attemptsTo(ClickOn.element());
+        OnStage.theActorInTheSpotlight().attemptsTo(ClickOn.element(LogInPage.LoginBoton));
     }
 
     @Then("I will see that i cant log in")
     public void iWillSeeThatICantLogIn() {
         // Write code here that turns the phrase above into concrete actions
-
+        OnStage.theActorInTheSpotlight().should(GivenWhenThen.seeThat(AlertLog.isEnable()));
     }
 
 }
